@@ -35,7 +35,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className={`${pretendard.className} max-w-screen-lg my-0 mx-auto h-screen flex flex-col`}>{children}</body>
+      <body className={`${pretendard.className} max-w-screen-lg my-0 mx-auto h-screen flex flex-col bg-background`}>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
