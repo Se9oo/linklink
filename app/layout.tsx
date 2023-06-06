@@ -1,4 +1,5 @@
-import './globals.css';
+import Footer from '@/components/footer/Footer';
+import '@/styles/globals.css';
 import localFont from 'next/font/local';
 
 const pretendard = localFont({
