@@ -1,5 +1,5 @@
 const Linklink = () => {
-  return <main className="flex-1 w-full">main</main>;
+  return <section className="p-6 mt-12">main</section>;
 };
 
 export default Linklink;

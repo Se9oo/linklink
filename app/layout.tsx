@@ -1,6 +1,6 @@
-import Footer from '@/components/footer/Footer';
-import '@/styles/globals.css';
 import localFont from 'next/font/local';
+import Header from '@/components/header/Header';
+import '@/styles/globals.css';
 
 const pretendard = localFont({
   src: [
@@ -35,9 +35,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className={`${pretendard.className} max-w-screen-lg my-0 mx-auto h-screen flex flex-col bg-background`}>
+      <body
+        className={`${pretendard.className} relative max-w-screen-lg my-0 mx-auto h-screen flex flex-col bg-background tracking-tight leading-4`}
+      >
+        <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );
