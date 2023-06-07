@@ -28,7 +28,7 @@ const pretendard = localFont({
 });
 
 export const metadata = {
-  title: 'linklink',
+	title: 'linklink - 링크링크',
   description: '',
 };
 
