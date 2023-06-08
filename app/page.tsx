@@ -6,13 +6,10 @@ const Linklink = () => {
 				<br />
 				<strong className="inline-block font-bold text-transparent bg-gradient-to-tr from-[#00d2ff] to-[#3a7bd5] bg-clip-text">
 					간편하게
-				</strong>{' '}
+				</strong>
 				관리해보세요!
 			</p>
-			<button
-				type="button"
-				className="w-full h-[56px] rounded-full bg-main text-white shadow-xl"
-			>
+			<button type="button" className="w-full h-[56px] rounded-full bg-main text-white shadow-xl">
 				linklink 시작하기
 			</button>
 		</section>
