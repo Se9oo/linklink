@@ -1,6 +1,7 @@
 import localFont from 'next/font/local';
 import Header from '@/components/header/Header';
 import '@/styles/globals.css';
+import NextAuthProvider from './providers';
 
 const pretendard = localFont({
 	src: [
@@ -37,8 +38,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 			<body
 				className={`${pretendard.className} relative max-w-screen-lg my-0 mx-auto h-screen flex flex-col bg-background tracking-tight leading-4`}
 			>
-				<Header />
-				{children}
+				<NextAuthProvider>
+					<Header />
+					{children}
+				</NextAuthProvider>
 			</body>
 		</html>
 	);
