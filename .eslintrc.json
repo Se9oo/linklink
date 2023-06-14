@@ -1,6 +1,6 @@
 {
 	"parser": "@typescript-eslint/parser",
-	"plugins": ["@typescript-eslint"],
+	"plugins": ["@typescript-eslint", "@tanstack/query"],
 	"extends": [
 		"next/core-web-vitals",
 		"airbnb",
@@ -8,7 +8,8 @@
 		"airbnb-typescript",
 		"plugin:@typescript-eslint/recommended",
 		"prettier",
-		"plugin:prettier/recommended"
+		"plugin:prettier/recommended",
+		"plugin:@tanstack/eslint-plugin-query/recommended"
 	],
 	"parserOptions": {
 		"project": ["./tsconfig.json", "./postcss.config.js", "./tailwind.config.js"]
@@ -29,6 +30,8 @@
 		"react/jsx-indent": ["off"],
 		"react/jsx-indent-props": ["off"],
 		"react/react-in-jsx-scope": ["off"],
-		"import/no-extraneous-dependencies": ["off"]
+		"import/no-extraneous-dependencies": ["off"],
+		"@tanstack/query/exhaustive-deps": "error",
+		"@tanstack/query/prefer-query-object-syntax": "error"
 	}
 }
