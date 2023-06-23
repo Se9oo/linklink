@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import UserAPI from '@/api/UserAPI';
+import { INTERNAL_URLS } from '@/constants/url';
 import type { Account, NextAuthOptions, User } from 'next-auth';
 import { AdapterUser } from 'next-auth/adapters';
 import GithubProvider from 'next-auth/providers/github';
@@ -19,9 +20,9 @@ export const authOptions: NextAuthOptions = {
 			clientSecret: process.env.KAKAO_CLIENT_SECRETS || '',
 		}),
 	],
-	// pages: {
-	// 	signIn: '/login',
-	// },
+	pages: {
+		signIn: INTERNAL_URLS.LOGIN,
+	},
 	callbacks: {
 		async signIn({ user, account, profile, email, credentials }) {
 			try {
