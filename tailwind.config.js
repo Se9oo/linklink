@@ -13,6 +13,7 @@ module.exports = {
 			colors: {
 				main: '#84B1ED',
 				background: '#fafafa',
+				kakao: '#FEE500',
 			},
 		},
 	},
