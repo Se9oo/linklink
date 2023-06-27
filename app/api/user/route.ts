@@ -28,11 +28,19 @@ export async function POST(request: NextRequest) {
 
 		const { userName, socialId, loginType } = params;
 
-		const { data } = await supabase.from('user').insert({
+		if (!socialId || !loginType) {
+			return NextResponse.json({ status: 'fail', message: 'server error', resultData: null }, { status: 500 });
+		}
+
+		const { error, data, status, count } = await supabase.from('user').insert({
 			userName,
 			socialId,
 			loginType,
 		});
+
+		if (error) {
+			return NextResponse.json({ status: 'fail', message: 'server error', resultData: null }, { status });
+		}
 
 		return NextResponse.json({ status: 'success', message: '', resultData: data });
 	} catch (error: unknown) {
