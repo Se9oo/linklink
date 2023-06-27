@@ -13,7 +13,8 @@ module.exports = {
 			colors: {
 				main: '#84B1ED',
 				background: '#fafafa',
-				kakao: '#FEE500',
+				kakao: '#FFDE00',
+				naver: '#00C73C',
 			},
 		},
 	},
