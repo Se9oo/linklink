@@ -1,15 +1,15 @@
 'use client';
 
-interface ConfigType {
-	[key: string]: {
-		bgColor: string;
-		color: string;
-	};
+import { EXTERNAL_URLS } from '@/constants/url';
+
+type ProviderNames = 'github' | 'kakao' | 'naver';
+interface ConfigOptions {
+	bgColor: string;
+	color: string;
 }
 
-interface LogoType {
-	[key: string]: string;
-}
+type ConfigType = Record<ProviderNames, ConfigOptions>;
+type LogoType = Record<ProviderNames, string>;
 
 const buttonConfig: ConfigType = {
 	github: {
@@ -20,18 +20,23 @@ const buttonConfig: ConfigType = {
 		bgColor: 'bg-kakao',
 		color: 'text-black',
 	},
+	naver: {
+		bgColor: 'bg-naver',
+		color: 'text-white',
+	},
 };
 
 const logos: LogoType = {
-	github: 'https://github.githubassets.com/favicons/favicon-dark.png',
-	kakao: 'https://www.kakaocorp.com/page/favicon.ico',
+	github: EXTERNAL_URLS.GITHUB_LOGO,
+	kakao: EXTERNAL_URLS.KAKAO_LOGO,
+	naver: EXTERNAL_URLS.NAVER_LOGO,
 };
 
 const SignInButtons = ({
 	providerName,
 	handleSignIn,
 }: {
-	providerName: string;
+	providerName: ProviderNames;
 	handleSignIn: (name: string) => void;
 }) => {
 	return (

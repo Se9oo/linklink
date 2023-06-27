@@ -5,6 +5,7 @@ import type { Account, NextAuthOptions, User } from 'next-auth';
 import { AdapterUser } from 'next-auth/adapters';
 import GithubProvider from 'next-auth/providers/github';
 import KakaoProvider from 'next-auth/providers/kakao';
+import NaverProvider from 'next-auth/providers/naver';
 
 export const authOptions: NextAuthOptions = {
 	session: {
@@ -19,6 +20,10 @@ export const authOptions: NextAuthOptions = {
 			clientId: process.env.KAKAO_CLIENT_ID || '',
 			clientSecret: process.env.KAKAO_CLIENT_SECRETS || '',
 		}),
+		NaverProvider({
+			clientId: process.env.NAVER_CLIENT_ID || '',
+			clientSecret: process.env.NAVER_CLIENT_SECRETS || '',
+		}),
 	],
 	pages: {
 		signIn: INTERNAL_URLS.LOGIN,
@@ -28,7 +33,6 @@ export const authOptions: NextAuthOptions = {
 			try {
 				const { name } = user as User | AdapterUser;
 				const { provider, providerAccountId } = account as Account;
-
 				// 기존 회원 여부 체크
 				const { status, message, resultData } = await UserAPI.getUser({
 					socialId: providerAccountId,
@@ -41,7 +45,11 @@ export const authOptions: NextAuthOptions = {
 
 				if (resultData.length === 0) {
 					// 회원 가입
-					await UserAPI.postSignUpUser({ userName: name, socialId: providerAccountId, loginType: provider });
+					await UserAPI.postSignUpUser({
+						userName: name,
+						socialId: providerAccountId,
+						loginType: provider,
+					});
 				}
 
 				return true;

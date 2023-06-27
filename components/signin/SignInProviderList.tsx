@@ -5,7 +5,11 @@ import { ClientSafeProvider, signIn } from 'next-auth/react';
 import { INTERNAL_URLS } from '@/constants/url';
 import SignInButtons from './SignInButtons';
 
-const SignInProviderList = ({ providers }: { providers: Record<string, ClientSafeProvider> | null }) => {
+const SignInProviderList = ({
+	providers,
+}: {
+	providers: Record<'github' | 'kakao' | 'naver', ClientSafeProvider> | null;
+}) => {
 	const searchParams = useSearchParams();
 	const callbackUrl = searchParams.get('callbackUrl') || '';
 
@@ -17,7 +21,7 @@ const SignInProviderList = ({ providers }: { providers: Record<string, ClientSaf
 
 	return (
 		<ul>
-			{Object.keys(providers).map((provider) => {
+			{(Object.keys(providers) as (keyof typeof providers)[]).map((provider) => {
 				return (
 					<li key={provider} className="mb-2">
 						<SignInButtons providerName={provider} handleSignIn={handleSignIn} />
